@@ -162,7 +162,7 @@ class ProductCrudController extends CrudController
             ->size(12);
 
         CRUD::field('medialibrary')
-            ->label('medialibrary')
+            ->label('Adaugă poze')
             ->type('medialibrary')
             ->size(12);
 

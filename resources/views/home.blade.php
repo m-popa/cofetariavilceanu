@@ -48,71 +48,42 @@
 	<section class="produse torturi pt-5" id="torturi">
 		<div class="container">
 			<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
-			<h1 class="text-white text-shadow">Torturi | <a class="h5 text-white" href="torturi.html">Vezi toate produsele</a></h1>
+
+			<h1 class="text-white text-shadow">Torturi | <a class="h5 text-white" href="#">Vezi toate produsele</a></h1>
+
 			<div class="row mt-4">
-				<div class="col-md-12 col-lg-6 mb-4">
-					<div class="d-flex rounded shadow">
-						<div class="w-50 rounded-left" data-toggle="modal" data-target="#tortCuCremaDeCiocolataSiFrisca" style="background-image: url(https://old.cofetariavilceanu.ro/wp-content/uploads/2014/06/IMG_8353.jpg);">
-							<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
-						</div>
-						<div class="w-50 bg-white rounded-right p-4">
-							<h5>Tort cu cremă de ciocolată și frișcă</h5>
-							<p class="mb-3">Vă rugăm să comandați cu cel putin 24h-48h înainte.</p>
-							<p class="float-right">~1kg</p>
-							<p>33 lei/kg</p>
+
+				@foreach($products as $product)
+					<div class="col-md-12 col-lg-6 mb-4">
+						<div class="d-flex rounded shadow">
+							<div class="w-50 rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+								<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
+							</div>
+							<div class="w-50 bg-white rounded-right p-4">
+								<h5>{{ $product->name }}</h5>
+								<p class="mb-3">{!! $product->description !!}</p>
+								<p>33 lei/kg</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="modal fade" id="tortCuCremaDeCiocolataSiFrisca" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-xl">
-						<div class="modal-content border-0 shadow-lg">
-							<div class="row">
-								<div class="col-lg-5 col-xl-4 p-5 d-flex-column align-self-center">
-									<h1>Tort cu cremă de ciocolată și frișcă</h1>
-									<p>Gramaj de minimum 1kg</p>
-									<p>Cantitatea comandată poate să depașească cu maximum 500g</p>
-									<p class="mb-5">Vă rugăm să comandați cu cel putin 24h-48h înainte.</p>
-									<h4>33 lei/kg</h4>
-								</div>
-								<div class="col-lg-7 col-xl-8 rounded-right" style="background-image: url(https://old.cofetariavilceanu.ro/wp-content/uploads/2014/06/IMG_8353.jpg);">
-									<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-white" data-dismiss="modal"></i>
+					<div class="modal fade" id="{{ $product->slug }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-xl">
+							<div class="modal-content border-0 shadow-lg">
+								<div class="row">
+									<div class="col-lg-5 col-xl-4 p-5 d-flex-column align-self-center">
+										<h1>{{ $product->name }}</h1>
+										<p class="mb-5">{!! $product->description !!}</p>
+										<h4>{{ $product->price }} lei/kg</h4>
+									</div>
+									<div class="col-lg-7 col-xl-8 rounded-right" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+										<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-white" data-dismiss="modal"></i>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="col-md-12 col-lg-6 mb-4">
-					<div class="d-flex rounded shadow">
-						<div class="w-50 rounded-left" data-toggle="modal" data-target="#tortTiramisu" style="background-image: url(https://old.cofetariavilceanu.ro/wp-content/uploads/2014/06/IMG_8314.jpg);">
-							<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
-						</div>
-						<div class="w-50 bg-white rounded-right p-4">
-							<h5>Tort Tiramisu</h5>
-							<p class="mb-3">Vă rugăm să comandați cu cel putin 24h-48h înainte.</p>
-							<p class="float-right">~1kg</p>
-							<p>35 lei/kg</p>
-						</div>
-					</div>
-				</div>
-				<div class="modal fade" id="tortTiramisu" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-xl">
-						<div class="modal-content border-0 shadow-lg">
-							<div class="row">
-								<div class="col-lg-5 col-xl-4 p-5 d-flex-column align-self-center">
-									<h1>Tort Tiramisu</h1>
-									<p>Gramaj de minimum 1kg</p>
-									<p>Cantitatea comandată poate să depașească cu maximum 500g</p>
-									<p class="mb-5">Vă rugăm să comandați cu cel putin 24h-48h înainte.</p>
-									<h4>35 lei/kg</h4>
-								</div>
-								<div class="col-lg-7 col-xl-8 rounded-right" style="background-image: url(https://old.cofetariavilceanu.ro/wp-content/uploads/2014/06/IMG_8314.jpg);">
-									<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-white" data-dismiss="modal"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+					@endforeach
+
 			</div>
 		</div>
 	</section> <!-- #torturi -->

@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('rgt')->unsigned()->nullable();
             $table->integer('depth')->unsigned()->nullable();
             $table->string('slug')->nullable();
+            $table->boolean('homepage')->default(false);
             $table->timestamps();
         });
     }

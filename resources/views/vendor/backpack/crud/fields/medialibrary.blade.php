@@ -17,6 +17,7 @@
             max-items="10"
             rules="mimes:jpeg,jpg"
         />
+        
         @if(isset($field['suffix'])) <div class="input-group-append"><span class="input-group-text">{!! $field['suffix'] !!}</span></div> @endif
     @if(isset($field['prefix']) || isset($field['suffix'])) </div> @endif
 

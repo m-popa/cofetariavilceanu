@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->boolean('active')->default(true);
             $table->string('stock')->default('1');
             $table->string('slug')->nullable();
+            $table->boolean('homepage')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

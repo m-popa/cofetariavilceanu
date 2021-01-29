@@ -18,10 +18,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/spatie.css') }}" rel="stylesheet">
-    <livewire:styles />
 </head>
 <body>
+
     <div id="app">
     </div>
         @include('partials.header')
@@ -33,15 +32,8 @@
 
         @include('partials.footer')
 
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
-
-    <livewire:scripts />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-
-
 
 </body>
 </html>
