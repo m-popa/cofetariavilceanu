@@ -3,17 +3,18 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
+    use Sluggable;
     use CrudTrait;
-
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
+    use InteractsWithMedia;
 
     protected $table = 'products';
 
@@ -21,27 +22,23 @@ class Product extends Model
 
     protected $guarded = ['id'];
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ],
+        ];
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | SCOPES
-    |--------------------------------------------------------------------------
-    */
-
-    /**
-     * Query scope "Variations".
-     *
-     * @param  Illuminate\Database\Query\Builder $query
-     * @param  mixed                             $value
-     * @return Illuminate\Database\Query\Builder
-     */
-    public function scopeVariations($query)
-    {
-        return $query->orWhere('child_of', '=', $this->child_of);
     }
 
     public function getProductPrice()
@@ -88,6 +85,19 @@ class Product extends Model
             default:
                 return 'Nespecificat';
         }
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('images');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
     }
 
     /**

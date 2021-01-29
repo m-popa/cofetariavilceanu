@@ -17,7 +17,9 @@ class ProductCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
@@ -27,6 +29,8 @@ class ProductCrudController extends CrudController
         $this->crud->setModel(Product::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/product');
         $this->crud->setEntityNameStrings('produs', 'produse');
+        // $this->crud->setEditView('your-view');
+        // $this->crud->setCreateView('admin.product.create');
 
         $this->crud->enableExportButtons();
         // dropdown filter
@@ -55,6 +59,31 @@ class ProductCrudController extends CrudController
             'searchable_attributes' => ['nume'],
             'paginate'              => 10,
         ]);
+    }
+
+    public function store()
+    {
+        $response = $this->traitStore();
+
+        $this->attachMediaFromRequest();
+
+        return $response;
+    }
+
+    public function update()
+    {
+        $response = $this->traitUpdate();
+
+        $this->attachMediaFromRequest();
+
+        return $response;
+    }
+
+    protected function attachMediaFromRequest()
+    {
+        $this->crud->entry
+            ->syncFromMediaLibraryRequest(request('images'))
+            ->toMediaCollection('images');
     }
 
     protected function setupListOperation()
@@ -131,6 +160,18 @@ class ProductCrudController extends CrudController
                 'skin' => 'oxide',
             ])
             ->size(12);
+
+        CRUD::field('medialibrary')
+            ->label('medialibrary')
+            ->type('medialibrary')
+            ->size(12);
+
+        CRUD::field('randomHiddenName')
+            ->type('upload_multiple')
+            ->upload(true)
+            ->wrapper([
+                'class' => 'd-none',
+            ]);
     }
 
     protected function setupUpdateOperation()

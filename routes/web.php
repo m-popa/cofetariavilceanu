@@ -7,3 +7,5 @@ Route::get('contact', 'ContactController@index')->name('contact');
 
 Auth::routes();
 Route::mediaLibrary();
+
+Route::get('/home', 'HomeController@index')->name('home');
