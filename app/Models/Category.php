@@ -35,6 +35,16 @@ class Category extends Model
     }
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
      * Returneaza parintele categoriei cerute.
      */
     public function parent()
@@ -119,7 +129,7 @@ class Category extends Model
      * @param  mixed  $value
      * @return string
      */
-    public function getNameAttribute($value)
+    public function getDisplayNameAttribute($value)
     {
         return $this->isParent() ? $value.' (P) ' : $value;
     }

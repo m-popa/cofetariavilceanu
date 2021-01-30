@@ -151,6 +151,11 @@ class ProductCrudController extends CrudController
             ->hint('Produsul poate avea mai multe categorii, dar doar cele parinte vor fii categoria principala.')
             ->size(4);
 
+        CRUD::field('intro')
+            ->label('Descriere scurta')
+            ->type('textarea')
+            ->size(12);
+
         CRUD::field('description')
             ->label('Descriere')
             ->type('tinymce')

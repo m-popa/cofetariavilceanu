@@ -3,6 +3,12 @@
 html {
   scroll-behavior: smooth;
 }
+/* Fonts
+-------- */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(../webfonts/PlayfairDisplay.ttf);
+}
 
 body {
 	color: #6C757D;
@@ -10,16 +16,11 @@ body {
 	background-image: url("../images/fundal.jpg");
 	background-attachment: fixed;
 	font-weight: 300;
+	font-family: 'Playfair Display', serif
     
 }
 
 
-/* Fonts
--------- */
-@font-face {
-  font-family: 'Playfair Display';
-  src: url(../webfonts/PlayfairDisplay.ttf);
-}
 
 
 /* Lightbox
@@ -61,6 +62,7 @@ h6, .h6 {
 
 p {
 	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 
@@ -102,6 +104,12 @@ header {
 @media (max-width: 991.98px) {
 	.program .cand {
 		margin-bottom: 1.5rem;
+	}
+	.produse .rounded-left, .produse .modal .rounded-right {
+	    background-size: cover;
+	    background-position: center;
+	    min-height: 150px;
+	    height: 150px !important
 	}
 }
 
@@ -266,6 +274,8 @@ nav .btn {
 .produse .modal .rounded-right {
 	background-size: cover; 
 	background-position: center;
+	max-height: 250px;
+	height: 192px;
 }
 
 .produse .rounded-left:hover {
@@ -355,6 +365,8 @@ nav .btn {
 	.produse .rounded-right h5,
 	.gelaterie .rounded-bottom h5 {
 		min-height: 48px;
+		font-size: 20px;
+		font-weight: 500;
 	}
 	.gelaterie .rounded-bottom .mb-3 {
 		min-height: 96px;

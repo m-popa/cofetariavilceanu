@@ -1,3 +1,4 @@
+<div class="gradient-line"></div>
 <footer class="footer pt-5 pb-4">
 	<div class="container">
 		<h3 class="">Ce spun clienții nostri | <br class="d-block d-md-none"> <span class="h6 text-white">Clienții vorbesc pentru noi</span></h3>
