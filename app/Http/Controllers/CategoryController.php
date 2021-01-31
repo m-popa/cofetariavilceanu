@@ -16,7 +16,6 @@ class CategoryController extends Controller
     {
         $categories = Category::whereNotNull('parent_id')->get();
         return view('categories.index', [
-            'categories' => $categories,
             'category' => $category,
         ]);
     }

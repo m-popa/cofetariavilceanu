@@ -32,8 +32,9 @@
 			</div>
 			<div class="col-12">
 				<div class="bg-white p-5 rounded-bottom shadow-xl mb-5">
-					<h3 class="mb-4">Informații <span class="float-right">{{ $product->price }} lei / {{ $product->price_type_display }}</span></h3>
-					<p>{{ strip_tags($product->description) }}</p>
+					<h3 class="mb-4">Informații </h3>
+					<p>{!!html_entity_decode($product->description)!!}</p>
+					<div class="h3 d-block mt-5">{{ $product->price }} lei / {{ $product->price_type_display }}</div>
 				</div>
 			</div>
 		</div>

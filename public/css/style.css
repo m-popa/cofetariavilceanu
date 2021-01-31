@@ -20,9 +20,6 @@ body {
     
 }
 
-
-
-
 /* Lightbox
 ----------- */
 .lightbox {
@@ -109,7 +106,8 @@ header {
 	    background-size: cover;
 	    background-position: center;
 	    min-height: 150px;
-	    height: 150px !important
+	    height: 150px !important;
+	    border-radius: 0 !important;
 	}
 }
 
@@ -276,6 +274,7 @@ nav .btn {
 	background-position: center;
 	max-height: 250px;
 	height: 192px;
+	border-radius: 0 !important;
 }
 
 .produse .rounded-left:hover {
@@ -284,10 +283,6 @@ nav .btn {
 
 .produse .modal .rounded-right {
 	padding: 0 0 500px 0;
-}
-
-.produse i {
-	opacity: 0.2;
 }
 
 .produse i:hover {
@@ -344,10 +339,17 @@ nav .btn {
 	}
 	.produse .modal .d-flex-column {
 		background-color: white !important;
-		border-radius: .25rem .25rem 0 0 !important;
 	}
 	.produse .modal .rounded-right {
 		border-radius: 0 0 .25rem .25rem !important;
+	}
+
+	.gelaterie .rounded-left, .gelaterie .modal .rounded-right {
+	    background-size: cover;
+	    background-position: center;
+	    max-height: 400px;
+	    height: 400px !important;
+	    background-repeat: no-repeat;
 	}
 }
 
@@ -382,4 +384,7 @@ nav .btn {
 
 .drepturi {
 	border-top: 1px solid #222;
+}
+.opacity-02 {
+	opacity: 0.2;
 }
