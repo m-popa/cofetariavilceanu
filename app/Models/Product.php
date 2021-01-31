@@ -108,6 +108,18 @@ class Product extends Model implements HasMedia
             ->addMediaConversion('preview')
             ->fit(Manipulations::FIT_CROP, 300, 300)
             ->nonQueued();
+
+        $this
+            ->addMediaConversion('modal_images')
+            ->width(1200)
+            ->height(700)
+            ->queued();
+
+        $this
+            ->addMediaConversion('home_images')
+            ->width(780)
+            ->height(500)
+            ->queued();
     }
 
     /**

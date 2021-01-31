@@ -71,10 +71,12 @@
 				<h3 class="mb-3">
 					Servicii | 
 					<br class="d-block d-md-none"> 
-					<a class="h6 text-white mr-3" href="#">Torturi</a> 
-					<a class="h6 text-white mr-3" href="#">Produse de Cofetarie</a> 
-					<a class="h6 text-white mr-3" href="#">Produse de Patiserie</a> 
-					<a class="h6 text-white" href="#">Gelaterie</a>
+					@php
+						$categories = App\Models\Category::whereNull('parent_id')->get();
+					@endphp
+					@foreach ($categories as $category)
+						<a class="h6 text-white mr-3 text-capitalize" href="{{ $category->url }}">{{ $category->name }}</a> 
+					@endforeach
 				</h3>
 				<h3>
 					Social Media | 

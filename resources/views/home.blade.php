@@ -51,14 +51,14 @@
 			<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
 
 			<h1 class="text-white text-shadow "><span class="text-capitalize">{{ $category->name }}</span> | 
-				<a class="h5 text-white" href="{{ route('category.show', $category) }}">Vezi toate produsele</a>
+				<a class="h5 text-white" href="{{ route('categories.index', $category, $categories) }}">Vezi toate produsele</a>
 			</h1>
 			<div class="row mt-4">
 
 				@foreach($category->products as $product)
 					<div class="col-md-12 col-lg-6 mb-4">
 						<div class="row no-gutters rounded shadow">
-							<div class="col-lg-6 col-6 rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+							<div class="col-lg-6 col-6 rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image: url({{ $product->getFirstMediaUrl('images','home_images') }});">
 								<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
 							</div>
 							<div class="col-lg-6 col-6 bg-white rounded-right p-4">
@@ -81,7 +81,7 @@
 											<i class="d-block d-md-none fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1" style="position:absolute; top:0; right:0" data-dismiss="modal"></i>
 
 										</div>
-										<div class="col-lg-7 col-xl-8 rounded-right order-1" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+										<div class="col-lg-7 col-xl-8 rounded-right order-1" style="background-image: url({{ $product->getFirstMediaUrl('images','modal_images') }});">
 										</div>
 									</div>
 								</div>
@@ -104,7 +104,7 @@
 			@foreach($gelaterie->products as $product)
 				<div class="col-sm-6 col-lg-3 mb-4">
 					<div class="d-flex-column rounded shadow">
-						<div class="rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+						<div class="rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image: url({{ $product->getFirstMediaUrl('images','home_images') }});">
 							<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
 							<i class="fas fa-star-half-alt text-white" title="Produsul poate să conțină mai multe sortimente"></i>
 						</div>
@@ -123,7 +123,7 @@
 									<h1>{{ $product->name }}</h1>
 									<p class="mb-5">{!! $product->intro !!}</p>
 								</div>
-								<div class="col-lg-6 col-xl-5 rounded-right" style="background-image: url({{ $product->getFirstMediaUrl('images') }});">
+								<div class="col-lg-6 col-xl-5 rounded-right" style="background-image: url({{ $product->getFirstMediaUrl('images','modal_images') }});">
 									<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-white" data-dismiss="modal"></i>
 								</div>
 							</div>

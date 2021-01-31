@@ -65,7 +65,7 @@ class Category extends Model
      */
     public function parentCategoryLink()
     {
-        return route('categories', ['slug' => $category->parent()->first()->slug]);
+        return route('categories.index', ['slug' => $category->parent()->first()->slug]);
     }
 
     /**
@@ -118,7 +118,7 @@ class Category extends Model
      */
     public function getUrlAttribute()
     {
-        return route('category', [$this]);
+        return route('categories.index', [$this]);
     }
 
     /**

@@ -12,8 +12,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Category $category)
     {
+        $categories = Category::whereNotNull('parent_id')->get();
+        return view('categories.index', [
+            'categories' => $categories,
+            'category' => $category,
+        ]);
     }
 
     /**
@@ -46,7 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category', ['category' => $category]);
+        return view('categories.show', ['category' => $category]);
     }
 
     /**
