@@ -15,9 +15,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id('id');
-            $table->string('name');
-            $table->longText('description');
-            $table->decimal('price', 9, 2);
+            $table->string('name')->nullable();
+            $table->longText('description')->nullable();
+            $table->decimal('price', 9, 2)->nullable();
             $table->integer('price_type')->default(1)->nullable();
             $table->string('sku')->nullable();
             $table->boolean('active')->default(true);
