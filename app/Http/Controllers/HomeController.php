@@ -15,8 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
-        $categories = Category::whereHas('products')->whereNull('parent_id')->where('id', '!=', 7)->get();
-        $gelaterie = Category::whereId(7)->first();
+        $categories = Category::whereHas('products')->whereNull('parent_id')->where('slug', '!=', 'gelaterie')->get();
+        $gelaterie = Category::whereSlug('gelaterie')->firstOrFail();
         return view('home', compact('products', 'categories', 'gelaterie'));
     }
 }

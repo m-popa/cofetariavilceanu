@@ -91,7 +91,6 @@
 	</section> <!-- #torturi -->
 	@endforeach
 
-
 	<section class="produse {{ strtolower($gelaterie->name) }} pt-5" id="gelaterie">
 		<div class="container">
 			<h1 class="text-white text-shadow">{{ $gelaterie->name }} | <a class="h5 text-white" href="{{ route('categories.index', $gelaterie) }}">Vezi toate produsele</a></h1>
@@ -129,7 +128,7 @@
 				@endforeach
 			</div>
 		</div>
-	</section> <!-- #gelaterie -->
+	</section> 
 
 </div>
 @endsection

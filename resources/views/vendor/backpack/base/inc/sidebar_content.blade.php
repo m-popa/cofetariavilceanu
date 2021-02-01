@@ -2,8 +2,8 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('product') }}'>Produse</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('categories') }}'>Categorii</a></li>
-<li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'>Comenzi</a></li>
-<!-- Users, Roles, Permissions -->
+{{-- <li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'>Comenzi</a></li>
+ --}}<!-- Users, Roles, Permissions -->
 <li class="nav-item nav-dropdown">
 	<a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-user-plus"></i> Utilizatori/roluri</a>
 	<ul class="nav-dropdown-items">
