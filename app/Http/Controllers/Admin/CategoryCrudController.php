@@ -48,11 +48,6 @@ class CategoryCrudController extends CrudController
             ->label('Nume')
             ->type('text');
 
-        CRUD::column('description')
-            ->label('Descriere')
-            ->type('text')
-            ->limit(100);
-
         CRUD::column('parent')
             ->label('Categorie părinte')
             ->type('relationship')

@@ -45,6 +45,21 @@ class ProductCrudController extends CrudController
         ], function ($value) { // if the filter is active
             $this->crud->addClause('where', 'active', $value);
         });
+
+        CRUD::filter('categories')
+            ->label('Categorie')
+            ->type('select2_multiple')
+            ->values(function () {
+                return Category::all()->pluck('name', 'id')->toArray();
+            })
+            ->whenActive(function ($values) {
+                foreach (json_decode($values) as $key => $value) {
+                    $this->crud->query = $this->crud->query->whereHas('categories', function ($query) use ($value) {
+                        $value = (int) $value;
+                        $query->where('category_id', $value);
+                    });
+                }
+            });
     }
 
     /**
@@ -110,9 +125,9 @@ class ProductCrudController extends CrudController
             })
             ->wrapper(['class' => 'font-weight-bold']);
 
-        CRUD::column('sku')
-            ->label('SKU')
-            ->type('text');
+        // CRUD::column('sku')
+        //     ->label('SKU')
+        //     ->type('text');
     }
 
     protected function setupCreateOperation()
