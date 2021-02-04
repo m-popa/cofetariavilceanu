@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /storage/media-library/
+/storage/media-library/temp/*
 /vendor
 .env
 .env.backup

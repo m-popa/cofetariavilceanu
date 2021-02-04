@@ -121,13 +121,9 @@ class ProductCrudController extends CrudController
             ->label('Preț')
             ->type('closure')
             ->function(function ($entry) {
-                return $entry->price.' / '.$entry->price_type_display;
+                return $entry->price.' / '.$entry->priceType->name;
             })
             ->wrapper(['class' => 'font-weight-bold']);
-
-        // CRUD::column('sku')
-        //     ->label('SKU')
-        //     ->type('text');
     }
 
     protected function setupCreateOperation()
@@ -149,15 +145,16 @@ class ProductCrudController extends CrudController
             ->suffix(' RON')
             ->size(2);
 
-        CRUD::field('price_type')
-            ->label('Tip Preț')
-            ->type('select2_from_array')
-            ->size(2)
-            ->options([
-                1 => 'Bucată',
-                2 => 'Kg',
-                3 => '100g',
-            ]);
+        CRUD::field('priceType')
+            ->label('TIP PREȚ')
+            ->type('relationship')
+            ->attribute('name')
+            ->entity('priceType')
+            ->ajax(true)
+            ->minimum_input_length(0)
+            ->placeholder('Caută tip preț')
+            ->inline_create(['entity' => 'admin.price-type'])
+            ->size(2);
 
         CRUD::field('categories')
             ->label('Categorii')
@@ -203,12 +200,15 @@ class ProductCrudController extends CrudController
     {
         $this->setupListOperation();
 
-        CRUD::column('price_type')
-            ->label('Tip Preț')
-            ->type('closure')
-            ->function(function ($entry) {
-                return $entry->price_type_display;
-            })
+        CRUD::column('priceType')
+            ->label('TIP PREȚ')
+            ->type('relationship')
+            ->attribute('name')
             ->after('price');
+    }
+
+    protected function fetchPriceType()
+    {
+        return $this->fetch(\App\Models\PriceType::class);
     }
 }

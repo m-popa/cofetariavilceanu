@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Product extends Model implements HasMedia
@@ -76,26 +76,26 @@ class Product extends Model implements HasMedia
      * @param  mixed  $value
      * @return string
      */
-    public function getPriceTypeDisplayAttribute()
-    {
-        if (!$this->price_type) {
-            return 'Necunoscut';
-        }
+    // public function getPriceTypeDisplayAttribute()
+    // {
+    //     if (!$this->price_type) {
+    //         return 'Necunoscut';
+    //     }
 
-        switch ($this->price_type) {
-            case 1:
-                return 'bucata';
+    //     switch ($this->price_type) {
+    //         case 1:
+    //             return 'bucata';
 
-            case 2:
-                return 'Kg';
+    //         case 2:
+    //             return 'Kg';
 
-            case 3:
-                return '100g';
+    //         case 3:
+    //             return '100g';
 
-            default:
-                return 'Nespecificat';
-        }
-    }
+    //         default:
+    //             return 'Nespecificat';
+    //     }
+    // }
 
     public function registerMediaCollections(): void
     {
@@ -120,6 +120,16 @@ class Product extends Model implements HasMedia
             ->width(780)
             ->height(500)
             ->queued();
+    }
+
+    /**
+     * Relationship with the PriceType model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function priceType()
+    {
+        return $this->belongsTo(PriceType::class, 'price_type', 'id')->withDefault();
     }
 
     /**
