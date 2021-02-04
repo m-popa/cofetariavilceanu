@@ -1,6 +1,7 @@
 <!-- This file is used to store sidebar items, starting with Backpack\Base 0.9.0 -->
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('product') }}'>Produse</a></li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('price-type') }}'>Tipuri Preț</a></li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('categories') }}'>Categorii</a></li>
 {{-- <li class='nav-item'><a class='nav-link' href='{{ backpack_url('order') }}'>Comenzi</a></li>
  --}}<!-- Users, Roles, Permissions -->
