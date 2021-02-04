@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
-use App\Models\Category;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
+use App\Models\Product;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -151,6 +151,7 @@ class ProductCrudController extends CrudController
             ->attribute('name')
             ->entity('priceType')
             ->ajax(true)
+            ->minimum_input_length(0)
             ->placeholder('Caută tip preț')
             ->inline_create(['entity' => 'admin.price-type'])
             ->size(2);
