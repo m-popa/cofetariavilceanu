@@ -109,6 +109,9 @@ header {
 	    height: 150px !important;
 	    border-radius: 0 !important;
 	}
+	.close-modal {
+		color: #fff !important;
+	}
 }
 
 @media (max-width: 454px) {
@@ -387,4 +390,14 @@ nav .btn {
 }
 .opacity-02 {
 	opacity: 0.2;
+}
+.close-modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 999999;
+}
+
+.showprod {
+	cursor: pointer;
 }

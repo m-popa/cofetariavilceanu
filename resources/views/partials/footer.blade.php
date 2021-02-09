@@ -1,8 +1,8 @@
 <div class="gradient-line"></div>
 <footer class="footer pt-5 pb-4">
 	<div class="container">
-		<h3 class="">Ce spun clienții nostri | <br class="d-block d-md-none"> <span class="h6 text-white">Clienții vorbesc pentru noi</span></h3>
-		<div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel">
+		{{-- <h3 class="">Ce spun clienții nostri | <br class="d-none d-md-none"> <span class="h6 text-white">Clienții vorbesc pentru noi</span></h3> --}}
+		<div id="carouselExampleControls" class="carousel d-none slide mt-4" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<div class="row">
@@ -87,7 +87,7 @@
 			<div class="drepturi col-12 mt-4 pt-4">		
 				<a class="h6 text-white float-none float-sm-right" href="#">Contactează-ne</a>
 				<br class="d-block d-sm-none">
-				<span class="h6">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
+				<span class="h6 text-white font-weight-bold">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
 			</div>
 		</div>
 	</div>
