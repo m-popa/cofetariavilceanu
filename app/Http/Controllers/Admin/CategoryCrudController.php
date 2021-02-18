@@ -100,7 +100,7 @@ class CategoryCrudController extends CrudController
             ->label('Ascunde descrierea pentru categoriile cu poze inalte')
             ->hint('pentru torturi nunta?')
             ->type('select_from_array')
-            ->default('Vezi Produsul')
+            ->default('0')
             ->options(['0' => 'NU', '1' => 'DA'])
             ->size(6);
 
