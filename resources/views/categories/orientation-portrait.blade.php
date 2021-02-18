@@ -1,10 +1,10 @@
-<div class="products col-md-12 col-lg-6 mb-4">
-	<div class="d-flex rounded shadow">
-		<div class="w-50 rounded-left" data-toggle="modal" data-target="#{{ $product->slug }}" 
+<div class="products {{ $category->name }} col-md-12 col-lg-6 mb-4 align-items-stretch">
+	<div class="d-flex product-container rounded shadow">
+		<div class="col-6 rounded-left image" data-toggle="modal" data-target="#{{ $product->slug }}" 
 			style="background-image:url('{{ $product->getFirstMediaUrl('images', 'home_images')}}');">
 			<i class="fas fa-eye m-3 p-1 text-white opacity-02" title="Aflați mai multe detalii"></i>
 		</div>
-		<div class="w-50 bg-white rounded-right p-4">
+		<div class="col-6 bg-white rounded-right p-4">
 			<h5>{{ $product->name }}</h5>
 			<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
 			<p>{{ $product->price }} Lei / {{ $product->priceType->name }}</p>

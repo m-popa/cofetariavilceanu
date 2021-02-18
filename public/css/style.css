@@ -282,7 +282,7 @@ nav .btn {
     background-size: cover;
     background-position: center;
     max-height: 250px;
-    height: 192px;
+    height: 200px;
     border-radius: 0 !important;
 }
 
@@ -291,7 +291,7 @@ nav .btn {
 }
 
 .produse .modal .rounded-right {
-    padding: 0 0 500px 0;
+    padding: 0 0 570px 0;
 }
 
 .produse i:hover {
@@ -433,4 +433,14 @@ nav .btn {
 
 .portrait-content {
     min-height: 150px;
+}
+
+.product-container .image {
+/*    height: 270px;
+    width: 200px;*/
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
 }

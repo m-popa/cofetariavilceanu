@@ -4,15 +4,19 @@
 				<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
 				<i class="fas fa-star-half-alt text-white" title="Produsul poate să conțină mai multe sortimente"></i>
 			</div>
-			<div class="bg-white portrait-content rounded-bottom p-4">
-				<h5>{{ $product->name }}</h5>
-				@if(!is_null($product->intro))
-					<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
-				@endif
-				<p class="">{{ $product->price }} Lei / {{ $product->priceType->name }}</p>
-			</div>
+
+			@if($category->disable_description != 0)
+				<div class="bg-white portrait-content rounded-bottom p-4">
+					<h5>{{ $product->name }}</h5>
+					@if(!is_null($product->intro))
+						<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
+					@endif
+					<p class="">{{ $product->price }} Lei / {{ $product->priceType->name }}</p>
+				</div>
+			@endif
 		</div>
 	</div>
+	
 	<div class="modal fade" id="{{ $product->slug }}" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-xl">
 			<div class="modal-content border-0 shadow-lg">

@@ -47,6 +47,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $gallery = $product->getMedia('images');
+
         return view(
             'products.show',
             [

@@ -11,7 +11,6 @@
 			<h1 class="text-white text-shadow text-capitalize">
 				{{ $subcategory->name }}  
 				@if($subcategory->products->count() >= 4)	
-				| <a class="h5 text-white showprod cursor-pointer">Vezi toate produsele</a>
 				@endif
 			</h1>
 			@endif
