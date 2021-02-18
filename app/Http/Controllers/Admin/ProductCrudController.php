@@ -185,6 +185,7 @@ class ProductCrudController extends CrudController
 
         CRUD::field('button_text')
             ->label('Text buton (default: Vezi Produsul)')
+            ->default('Vezi Produsul')
             ->type('text')
             ->size(12);
 
