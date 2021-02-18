@@ -83,19 +83,6 @@ class Category extends Model
     }
 
     /**
-     * Genereaza o colectie de subcategorii in functie de parintele categoriei
-     * si le sorteaza dupa lft (left) extragand doar campurile
-     * nume, slug, lft categorii -- de folosit
-     * pe pagina categoriei principale.
-     *
-     * @return Illuminate\Database\Eloquent\Collection
-     */
-    public function subcategories()
-    {
-        return self::select('name', 'slug', 'lft')->where('parent_id', $this->id)->get()->sortBy('lft');
-    }
-
-    /**
      * Relatie children spre categorie.
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
@@ -132,5 +119,13 @@ class Category extends Model
     public function getDisplayNameAttribute($value)
     {
         return $this->isParent() ? $value.' (P) ' : $value;
+    }
+
+    /**
+     * Returneaza prima subcategorie a categoriei parinte.
+     */
+    protected function subcategories()
+    {
+        return $this->categories->whereNotNull('parent_id')->limit(1);
     }
 }
