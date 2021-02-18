@@ -6,7 +6,9 @@
 			</div>
 			<div class="bg-white portrait-content rounded-bottom p-4">
 				<h5>{{ $product->name }}</h5>
-				<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
+				@if(!is_null($product->intro))
+					<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
+				@endif
 				<p class="">{{ $product->price }} Lei / {{ $product->priceType->name }}</p>
 			</div>
 		</div>
