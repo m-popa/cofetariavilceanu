@@ -77,21 +77,35 @@ class CategoryCrudController extends CrudController
             ->size(6);
 
         CRUD::field('parent_id')
-            ->label('Părinte')
+            ->label('Categoria Părinte')
             ->type('relationship')
             ->attribute('name')
-            ->size(5);
+            ->size(6);
 
-        CRUD::field('description')
-            ->label('Descriere')
-            ->type('easymde')
-            ->simplemdeAttributes([
-                'promptURLs'   => true,
-                'status'       => false,
-                'spellChecker' => false,
-                'forceSync'    => true,
-                'styleSelectedText' => false,
-            ]);
+        CRUD::field('orientation')
+            ->label('Orientarea produselor din categorie')
+            ->type('select_from_array')
+            ->hint('defaultul este pe "Pătrat"')
+            ->options(['1' => 'Pătrat', '2' => 'Înalt'])
+            ->size(6);
+
+        CRUD::field('homepage')
+            ->label('Arată produsele din categorie pe homepage')
+            ->hint('doar 4 produse vor fi afisate')
+            ->type('select_from_array')
+            ->options(['0' => 'NU', '1' => 'DA'])
+            ->size(6);
+
+        // CRUD::field('description')
+        //     ->label('Descriere')
+        //     ->type('easymde')
+        //     ->simplemdeAttributes([
+        //         'promptURLs'   => true,
+        //         'status'       => false,
+        //         'spellChecker' => false,
+        //         'forceSync'    => true,
+        //         'styleSelectedText' => false,
+        //     ]);
     }
 
     protected function setupUpdateOperation()

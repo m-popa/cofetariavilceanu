@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\Setting;
 
 class HomeController extends Controller
 {
@@ -14,9 +14,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $categories = Category::whereHas('products')->whereNull('parent_id')->where('slug', '!=', 'gelaterie')->get();
-        $gelaterie = Category::whereSlug('gelaterie')->firstOrFail();
-        return view('home', compact('products', 'categories', 'gelaterie'));
+        $settings = Setting::latest()->first();
+        $categories = Category::whereHas('products')->where('homepage', 1)->take(4)->get();
+        return view('home', [
+            'settings' => $settings,
+            'categories' => $categories,
+        ]);
     }
 }

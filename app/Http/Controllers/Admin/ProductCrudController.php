@@ -183,6 +183,11 @@ class ProductCrudController extends CrudController
             ->type('medialibrary')
             ->size(12);
 
+        CRUD::field('button_text')
+            ->label('Text buton (default: Vezi Produsul)')
+            ->type('text')
+            ->size(12);
+
         CRUD::field('randomHiddenName')
             ->type('upload_multiple')
             ->upload(true)

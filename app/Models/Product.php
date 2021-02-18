@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
-use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Product extends Model implements HasMedia
@@ -133,11 +133,29 @@ class Product extends Model implements HasMedia
     }
 
     /**
-     * Returneaza categoria parinte a produsului.
+     * Retrieve the ParentCategory attribute.
+     *
+     *
+     * @param    mixed
+     * @param  mixed  $value
+     * @return string
      */
-    protected function category()
+    public function getParentCategoryAttribute()
     {
-        return $this->categories->whereNull('parent_id');
+        return $this->categories->whereNull('parent_id')->first();
+    }
+
+    /**
+     * Retrieve Orientation attribute.
+     *
+     *
+     * @param    mixed
+     * @param  mixed  $value
+     * @return string
+     */
+    public function getOrientationAttribute()
+    {
+        return $this->categories->orientation;
     }
 
     /**
