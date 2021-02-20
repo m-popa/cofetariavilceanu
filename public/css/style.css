@@ -424,12 +424,16 @@ nav .btn {
 .showprod {
     cursor: pointer;
 }
-
 .portrait {
-    padding-bottom: 250px;
+    padding-bottom: 280px;
     background-size: cover;
     background-position: center;
 }
+/*.portrait {
+    padding-bottom: 280px;
+    background-size: cover;
+    background-position: center;
+}*/
 
 .portrait-content {
     min-height: 150px;

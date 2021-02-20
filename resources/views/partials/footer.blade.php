@@ -79,6 +79,7 @@
 					@endforeach
 				</h3>
 				<h3>
+					<a href="https://api.whatsapp.com/send?phone=+40740339339">Send Message</a>
 					Social Media | 
 					<br class="d-block d-md-none"> 
 					<a class="h6 text-white mr-3" href="https://www.facebook.com/cofetariavilceanu">Facebook</a> 

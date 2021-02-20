@@ -59,8 +59,9 @@
 					<div class="col-sm-6 col-lg-3 mb-4">
 						<div class="d-flex-column rounded shadow">
 							<div class="portrait" data-toggle="modal" data-target="#{{ $product->slug }}" style="background-image:url('{{ $product->getFirstMediaUrl('images', 'home_images')}}');">
-								<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
-								<i class="fas fa-star-half-alt text-white" title="Produsul poate să conțină mai multe sortimente"></i>
+								<div class="m-3 p-1"></div>
+{{-- 								<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
+								<i class="fas fa-star-half-alt text-white" title="Produsul poate să conțină mai multe sortimente"></i> --}}
 							</div>
 							
 							<div class="bg-white portrait-content rounded-bottom p-4">

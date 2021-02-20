@@ -4,7 +4,7 @@
 			<i class="fas fa-eye m-3 p-1 text-white" title="Aflați mai multe detalii"></i>
 			<i class="fas fa-star-half-alt text-white" title="Produsul poate să conțină mai multe sortimente"></i>
 		</div>
-		@if($subcategory->disable_description == 0)
+		@if($category->disable_description == 0)
 			<div class="bg-white portrait-content rounded-bottom p-4">
 				<h5>{{ $product->name }}</h5>
 				@if(!is_null($product->intro))
