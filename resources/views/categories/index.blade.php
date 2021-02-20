@@ -5,17 +5,13 @@
 <section class="produse torturi faina py-5" id="torturi">
 	<div class="container">
 		<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
-		@foreach($category->children as $subcategory)
 
-			@if($subcategory->products->count() >= 1)	
-			<h1 class="text-white text-shadow text-capitalize">
-				{{ $subcategory->name }}  
-				@if($subcategory->products->count() >= 4)	
-				@endif
-			</h1>
+		@foreach($category->childrens as $subcategory)
+			@if(!is_null($subcategory->name))
+				<h1 class="text-white text-shadow">{{ $subcategory->name }}</h1>
 			@endif
-
-			<div class="row produse my-4">
+		
+			<div class="row produse my-4" id="{{ $subcategory->slug }}">
 				@foreach($subcategory->products as $key => $product)
 					@if($subcategory->orientation != 2)
 						@include('categories.orientation-portrait')

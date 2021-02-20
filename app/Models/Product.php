@@ -18,7 +18,7 @@ class Product extends Model implements HasMedia
 
     protected $table = 'products';
 
-    protected $with = ['categories'];
+    // protected $with = ['categories'];
 
     protected $guarded = ['id'];
 
@@ -113,6 +113,7 @@ class Product extends Model implements HasMedia
             ->addMediaConversion('modal_images')
             ->width(1200)
             ->height(700)
+            // ->watermark(public_path('/images/test.png'))
             ->queued();
 
         $this
@@ -156,6 +157,19 @@ class Product extends Model implements HasMedia
     public function getOrientationAttribute()
     {
         return $this->categories->orientation;
+    }
+
+    /**
+     * Retrieve the product Title attribute.
+     *
+     *
+     * @param    mixed
+     * @param  mixed  $value
+     * @return string
+     */
+    public function getTitleAttribute()
+    {
+        return preg_replace('/[0-9]+/', '', $this->name);
     }
 
     /**

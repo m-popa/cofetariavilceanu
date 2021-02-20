@@ -5,7 +5,7 @@
 			{{-- <i class="fas fa-eye m-3 p-1 text-white opacity-02" title="Aflați mai multe detalii"></i> --}}
 		</div>
 		<div class="col-6 bg-white rounded-right p-4">
-			<h5>{{ $product->name }}</h5>
+			<h5>{{ $product->title }}</h5>
 			<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
 			<p>{{ $product->price }} Lei / {{ $product->priceType->name }}</p>
 		</div>

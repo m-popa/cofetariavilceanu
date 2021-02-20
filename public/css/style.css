@@ -82,11 +82,11 @@ header {
 /* Logo
 ------- */
 /*.logo img {
-	transition: transform .25s ease-in-out;
+    transition: transform .25s ease-in-out;
 }
 
 .logo img:hover {
-	-webkit-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
         -ms-transform: scale(1.2);
             transform: scale(1.2);
 }*/
@@ -115,6 +115,10 @@ header {
 
     .close-modal {
         color: #fff !important;
+    }
+
+    .portrait {
+        padding-bottom: 380px !important;
     }
 }
 
@@ -195,6 +199,15 @@ nav .btn {
 
 }
 
+/* Patiserie
+---------- */
+.prajituri {
+    background-image: url('../images/fundalPatiserie.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+
+}
+
 
 /* Gelaterie
 ------------ */
@@ -224,6 +237,7 @@ nav .btn {
 .faina {
     background-image: url('../images/faina.png');
     background-position: top center;
+    background-repeat: repeat-y;
 }
 
 .shadow-xl {
@@ -424,11 +438,17 @@ nav .btn {
 .showprod {
     cursor: pointer;
 }
+
 .portrait {
     padding-bottom: 280px;
     background-size: cover;
     background-position: center;
 }
+
+.portrait.landscape {
+    padding-bottom: 334px;
+}
+
 /*.portrait {
     padding-bottom: 280px;
     background-size: cover;
@@ -440,11 +460,30 @@ nav .btn {
 }
 
 .product-container .image {
-/*    height: 270px;
+    /*    height: 270px;
     width: 200px;*/
 }
 
 .carousel-control-next,
-.carousel-control-prev /*, .carousel-indicators */ {
+.carousel-control-prev
+
+/*, .carousel-indicators */
+    {
     filter: invert(100%);
+}
+
+@media (max-width: 1400px) {
+    .produs-single {
+        object-fit: contain;
+        background: #fff;
+        max-height: 650px;
+    }
+}
+
+@media (min-width: 1450px) {
+    .produs-single {
+        object-fit: contain;
+        background: #fff;
+        max-height: 850px;
+    }
 }

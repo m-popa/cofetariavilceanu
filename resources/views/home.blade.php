@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-lg-6 text-shadow">
 						<h5>Bine ați venit!</h5>
-						<h1 class="text-white mb-5">Cofetăria Vilceanu</h1>
+						<h1 class="text-white mb-5">Cofetăria Vîlceanu</h1>
 						<h6>{!! nl2br($settings->homepage_text) !!}</h6>
 						<a href="{{ route('contact') }}" role="button" class="btn btn-success px-4 py-2 mt-5 rounded-pill">Contactează-ne</a>
 					</div>
@@ -51,8 +51,8 @@
 			</h1>
 
 			<div class="row mt-4">
-
 				@foreach($category->products->take(4) as $product)
+
 					@if($category->orientation != 2)
 						@include('categories.orientation-portrait')
 					@else
@@ -65,7 +65,7 @@
 							</div>
 							
 							<div class="bg-white portrait-content rounded-bottom p-4">
-								<h5>{{ $product->name }}</h5>
+								<h5>{{ $product->title }}</h5>
 								@if(!is_null($product->intro))
 									<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
 								@endif

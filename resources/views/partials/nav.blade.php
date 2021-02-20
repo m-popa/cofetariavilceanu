@@ -5,7 +5,7 @@
 				<a href="tel:0769098648" role="button" class="btn btn-outline-light px-4 mr-3 rounded-pill float-left float-md-none d-inline-block d-md-none"><i class="fas fa-phone"></i></a>
 				<a href="{{ route('home') }}" role="button" class="{{ (request()->route()->getName() == 'home') ? 'active' : '' }} btn btn-outline-light px-4 mr-3 rounded-pill float-left float-md-none d-none d-md-inline-block"><i class="fas fa-home d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Acasă</span></a>
 				@php
-					$categories = App\Models\Category::whereNull('parent_id')->get();
+					$categories = App\Models\Category::whereNull('parent_id')->where('id', '!=', 28)->get();
 				@endphp
 
 				@foreach($categories as $category)

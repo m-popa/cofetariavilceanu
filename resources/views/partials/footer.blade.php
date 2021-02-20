@@ -79,16 +79,17 @@
 					@endforeach
 				</h3>
 				<h3>
-					<a href="https://api.whatsapp.com/send?phone=+40740339339">Send Message</a>
+		
 					Social Media | 
 					<br class="d-block d-md-none"> 
-					<a class="h6 text-white mr-3" href="https://www.facebook.com/cofetariavilceanu">Facebook</a> 
+					<a class="h6 text-white mr-3" href="https://www.facebook.com/cofetariavilceanu" target="_blank">Facebook</a>
+					<a href="https://api.whatsapp.com/send?phone=+40769098648" class="h6 text-white mr-3">Whatsapp</a>
 				</h3>
 			</div>
 			<div class="drepturi col-12 mt-4 pt-4">		
-				<a class="h6 text-white float-none float-sm-right" href="#">Contactează-ne</a>
+				<a class="h6 text-white float-none float-sm-right" href="{{ route('contact') }}">Contactează-ne</a>
 				<br class="d-block d-sm-none">
-				<span class="h6 text-white font-weight-bold">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
+				<span class="h6 text-white">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
 			</div>
 		</div>
 	</div>
