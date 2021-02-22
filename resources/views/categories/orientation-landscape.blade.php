@@ -10,12 +10,15 @@
 				@if(!is_null($product->intro))
 					<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
 				@endif
-				@if($product->disable_prices != 1)
-					<h4>{{ $product->price }} Lei / {{ $product->priceType->name }}</h4>
-					@if(!is_null($product->price2))
-					<h4>{{ $product->price2 }} Lei / {{ $product->priceType->name }}</h4>
-					@endif
+
+				@if(is_array($product->display_price))
+					@foreach($product->display_price as $price)
+					<h4>{{ $price }}</h4>
+					@endforeach
+				@else
+					<h4>{{ $product->display_price }}</h4>
 				@endif
+
 			</div>
 		@endif
 

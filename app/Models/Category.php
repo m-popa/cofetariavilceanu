@@ -132,6 +132,42 @@ class Category extends Model
     }
 
     /**
+     * Query scope "Parent".
+     *
+     *
+     * @param  Illuminate\Database\Query\Builder $query
+     * @return Illuminate\Database\Query\Builder
+     */
+    public function scopeParent($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
+    /**
+     * Query scope "Ordered".
+     *
+     *
+     * @param  Illuminate\Database\Query\Builder $query
+     * @return Illuminate\Database\Query\Builder
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('menu_order');
+    }
+
+    /**
+     * Query scope "Visible In Nav".
+     *
+     *
+     * @param  Illuminate\Database\Query\Builder $query
+     * @return Illuminate\Database\Query\Builder
+     */
+    public function scopeVisibleInNav($query)
+    {
+        return $query->where('visible_in_nav', 1);
+    }
+
+    /**
      * Returneaza prima subcategorie a categoriei parinte.
      */
     protected function subcategories()

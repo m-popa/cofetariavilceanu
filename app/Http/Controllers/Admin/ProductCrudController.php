@@ -174,16 +174,16 @@ class ProductCrudController extends CrudController
             ->hint('Produsul poate avea mai multe categorii, dar doar cele parinte vor fii categoria principala.')
             ->size(6);
 
-        CRUD::field('disable_prices')
-            ->label('Ascunde ambele preturi')
-            ->default(false)
-            ->type('radio')
-            ->options(
-                [
-                    false => 'Nu',
-                    true => 'Da',
-                ]
-            )
+        CRUD::field('visible_price')
+            ->label('Afisare pret')
+            ->type('select2_from_array')
+            ->options([
+                'price1' => 'Afiseaza pret 1',
+                'price2' => 'Afiseaza pret 2',
+                'allprices' => 'Afiseaza ambele preturi',
+                'noprice' => 'Ascunde ambele preturi',
+            ])
+            ->default('price1')
             ->size(6);
 
         CRUD::field('sku')

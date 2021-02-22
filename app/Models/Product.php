@@ -132,6 +132,33 @@ class Product extends Model implements HasMedia
     }
 
     /**
+     * Retrieve the Display Price attribute.
+     *
+     *
+     * @param    mixed
+     * @return string
+     */
+    public function getDisplayPriceAttribute()
+    {
+        switch ($this->visible_price) {
+            case 'price1':
+                return "{$this->price} Lei / {$this->priceType->name}";
+            case 'price2':
+                return "{$this->price2} Lei / {$this->priceType->name}";
+            case 'allprices':
+                return [
+                    "{$this->price} Lei / {$this->priceType->name}",
+                    "{$this->price2} Lei / {$this->priceType->name}",
+                ];
+            case 'noprice':
+                return null;
+
+            default:
+                return "{$this->price} Lei / {$this->priceType->name}";
+        }
+    }
+
+    /**
      * Returneaza prima subcategorie a categoriei parinte.
      */
     protected function subcategories()

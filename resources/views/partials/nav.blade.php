@@ -4,10 +4,9 @@
 			<div class="col text-center">
 				<a href="tel:0769098648" role="button" class="btn btn-outline-light px-4 mr-3 rounded-pill float-left float-md-none d-inline-block d-md-none"><i class="fas fa-phone"></i></a>
 				<a href="{{ route('home') }}" role="button" class="{{ (request()->route()->getName() == 'home') ? 'active' : '' }} btn btn-outline-light px-4 mr-3 rounded-pill float-left float-md-none d-none d-md-inline-block"><i class="fas fa-home d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Acasă</span></a>
-				@php
-					$categories = App\Models\Category::whereNull('parent_id')->where('id', '!=', 35)->where('id', '!=', 30)->orderBy('menu_order')->get();
-				@endphp
 
+				{{-- daca nu-ti aduci aminte de unde apar astea --}}
+				{{-- verifica in AppServiceProvider :) --}}
 				@foreach($categories as $category)
 					<div class="dropdown d-inline-block">
 						<a href="{{ $category->url }}" role="button" class="{{ (request()->segment(2) == $category->slug) ? 'active' : '' }} text-capitalize btn btn-outline-light px-4 mr-3 rounded-pill d-none d-md-inline-block">

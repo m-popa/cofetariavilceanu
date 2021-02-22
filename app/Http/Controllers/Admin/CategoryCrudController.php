@@ -97,6 +97,13 @@ class CategoryCrudController extends CrudController
             ->options(['0' => 'NU', '1' => 'DA'])
             ->size(6);
 
+        CRUD::field('visible_in_nav')
+            ->label('Apare in meniu')
+            ->type('select_from_array')
+            ->options(['0' => 'NU', '1' => 'DA'])
+            ->default(1)
+            ->size(6);
+
         CRUD::field('disable_description')
             ->label('Ascunde descrierea pentru categoriile cu poze inalte')
             ->hint('pentru torturi nunta?')
