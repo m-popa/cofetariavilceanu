@@ -2,12 +2,20 @@
 	<div class="d-flex product-container rounded shadow">
 		<div class="col-6 rounded-left image" data-toggle="modal" data-target="#{{ $product->slug }}" 
 			style="background-image:url('{{ $product->getFirstMediaUrl('images', 'home_images')}}');">
-			{{-- <i class="fas fa-eye m-3 p-1 text-white opacity-02" title="Aflați mai multe detalii"></i> --}}
 		</div>
 		<div class="col-6 bg-white rounded-right p-4">
 			<h5>{{ $product->title }}</h5>
-			<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
-			<p>{{ $product->price }} Lei / {{ $product->priceType->name }}</p>
+			@if(!is_null($product->intro))
+				<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
+			@endif
+			@if($product->disable_prices != 1)
+				@if(!is_null($product->price))
+					<h4>{{ $product->price }} Lei / {{ $product->priceType->name }}</h4>
+				@endif
+				@if(!is_null($product->price2))
+					<h4>{{ $product->price2 }} Lei / {{ $product->priceType->name }}</h4>
+				@endif
+			@endif
 		</div>
 	</div>
 </div>
@@ -18,9 +26,17 @@
 			<div class="row">
 				<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-dark close-modal" data-dismiss="modal"></i>
 				<div class="col-lg-5 col-xl-4 p-5 d-flex-column align-self-center order-2">
-					<h1>{{ $product->name }}</h1>
-					<p class="mb-5">{!!html_entity_decode($product->intro)!!}</p>
-					<h4>{{ $product->price }} / {{ $product->priceType->name }}</h4>
+					<h1>{{ $product->title }}</h1>
+					@if(!is_null($product->intro))
+						<p class="mb-5">{!!html_entity_decode($product->intro)!!}</p>
+					@endif
+
+					@if($product->disable_prices != 1)
+						<h4 class="mt-5">{{ $product->price }} / {{ $product->priceType->name }}</h4>
+						@if(!is_null($product->price2))
+							<h4>{{ $product->price2 }} Lei / {{ $product->priceType->name }}</h4>
+						@endif
+					@endif
 					<a href="{{ route('product.show', $product) }}" class="mt-3 btn btn-outline-dark">{{ $product->button_text }}</a>
 				</div>
 				<div class="col-lg-7 col-xl-8 rounded-right order-1" style="background-image:url('{{ $product->getFirstMediaUrl('images', 'modal_images')}}');">

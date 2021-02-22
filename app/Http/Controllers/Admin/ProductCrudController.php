@@ -23,16 +23,17 @@ class ProductCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\FetchOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     public function setup()
     {
         $this->crud->setModel(Product::class);
         $this->crud->setRoute(config('backpack.base.route_prefix').'/product');
         $this->crud->setEntityNameStrings('produs', 'produse');
-        // $this->crud->setEditView('your-view');
-        // $this->crud->setCreateView('admin.product.create');
 
         $this->crud->enableExportButtons();
+        $this->crud->enableReorder('name', 2);
+        $this->crud->allowAccess('reorder');
         // dropdown filter
         $this->crud->addFilter([
             'name' => 'active',
@@ -143,7 +144,17 @@ class ProductCrudController extends CrudController
                 'step' => 'any',
             ])
             ->suffix(' RON')
-            ->size(2);
+            ->size(3);
+
+        CRUD::field('price2')
+            ->label('Preț 2')
+            ->type('number')
+            ->decimals(2)
+            ->attributes([
+                'step' => 'any',
+            ])
+            ->suffix(' RON')
+            ->size(3);
 
         CRUD::field('priceType')
             ->label('TIP PREȚ')
@@ -161,7 +172,19 @@ class ProductCrudController extends CrudController
             ->type('relationship')
             ->minimum_input_length(3)
             ->hint('Produsul poate avea mai multe categorii, dar doar cele parinte vor fii categoria principala.')
-            ->size(4);
+            ->size(6);
+
+        CRUD::field('disable_prices')
+            ->label('Ascunde ambele preturi')
+            ->default(false)
+            ->type('radio')
+            ->options(
+                [
+                    false => 'Nu',
+                    true => 'Da',
+                ]
+            )
+            ->size(6);
 
         CRUD::field('sku')
             ->label('Cod produs')

@@ -48,54 +48,13 @@ class Product extends Model implements HasMedia
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->orderBy('lft');
     }
 
     public function getProductPrice()
     {
         return $this->pret;
     }
-
-    /**
-     * Query scope "Parent".
-     *
-     * @param  Illuminate\Database\Query\Builder $query
-     * @param  mixed                             $value
-     * @return Illuminate\Database\Query\Builder
-     */
-    public function scopeParent($query)
-    {
-        return $query->where('id', '=', $this->child_of);
-    }
-
-    /**
-     * Retrieve the Price Type attribute.
-     *
-     *
-     * @param    mixed
-     * @param  mixed  $value
-     * @return string
-     */
-    // public function getPriceTypeDisplayAttribute()
-    // {
-    //     if (!$this->price_type) {
-    //         return 'Necunoscut';
-    //     }
-
-    //     switch ($this->price_type) {
-    //         case 1:
-    //             return 'bucata';
-
-    //         case 2:
-    //             return 'Kg';
-
-    //         case 3:
-    //             return '100g';
-
-    //         default:
-    //             return 'Nespecificat';
-    //     }
-    // }
 
     public function registerMediaCollections(): void
     {

@@ -40,14 +40,15 @@
 			</div>
 			<div class="col-12">
 				<div class="bg-white p-5 rounded-bottom shadow-xl mb-5">
-					<h3 class="mb-4">Informații </h3>
 					@if(!is_null($product->sku))
 						<div class="mb-3">
 							Cod produs: <span class="font-weight-bold text-dark">{{ $product->sku }}</span>
 						</div>
 					@endif
 					<p>{!!html_entity_decode($product->description)!!}</p>
-					<div class="h3 d-block mt-5">{{ $product->price }} Lei / {{ $product->priceType->name }}</div>
+					@if($product->categories->first()->parent_id != 5)
+						<div class="h3 d-block mt-5">{{ $product->price }} Lei / {{ $product->priceType->name }}</div>
+					@endif
 				</div>
 			</div>
 		</div>

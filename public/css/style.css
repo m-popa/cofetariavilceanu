@@ -487,3 +487,7 @@ nav .btn {
         max-height: 850px;
     }
 }
+
+.font-secondary {
+    font-family: 'Amita', cursive;
+}

@@ -124,6 +124,14 @@ class Category extends Model
     }
 
     /**
+     * Retrieve the Title attribute.
+     */
+    public function getTitleAttribute()
+    {
+        return str_replace('homepage', '', $this->name);
+    }
+
+    /**
      * Returneaza prima subcategorie a categoriei parinte.
      */
     protected function subcategories()

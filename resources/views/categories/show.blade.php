@@ -6,7 +6,7 @@
 	<div class="container">
 			<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
 
-			<h1 class="text-white text-shadow text-cappitalize">{{ $category->name }}</h1>
+			<h1 class="text-white text-shadow text-cappitalize">{{ $category->title }}</h1>
 
 			<div class="row mt-4">
 			@foreach($category->products as $product)
@@ -27,7 +27,7 @@
 							<div class="modal-content border-0 shadow-lg">
 								<div class="row">
 									<div class="col-lg-5 col-xl-4 p-5 d-flex-column align-self-center">
-										<h1>Tort cu cremă de ciocolată și frișcă</h1>
+										<h1>{{ $product->title }}</h1>
 										<p class="mb-5">{{  strip_tags($product->description) }}</p>
 										<h4>{{ $product->price }} / {{ $product->price_type_display }}</h4>
 									</div>

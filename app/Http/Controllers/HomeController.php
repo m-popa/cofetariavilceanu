@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $settings = Setting::latest()->first();
-        $categories = Category::whereHas('products')->where('homepage', 1)->get();
+        $categories = Category::whereHas('products')->where('homepage', 1)->orderBy('lft')->get();
         return view('home', [
             'settings' => $settings,
             'categories' => $categories,

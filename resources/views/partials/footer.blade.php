@@ -72,7 +72,7 @@
 					Servicii | 
 					<br class="d-block d-md-none"> 
 					@php
-						$categories = App\Models\Category::whereNull('parent_id')->get();
+						$categories = App\Models\Category::whereNull('parent_id')->where('id', '!=', 35)->where('id', '!=', 30)->orderBy('menu_order')->get();
 					@endphp
 					@foreach ($categories as $category)
 						<a class="h6 text-white mr-3 text-capitalize" href="{{ $category->url }}">{{ $category->name }}</a> 

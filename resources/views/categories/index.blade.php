@@ -7,8 +7,8 @@
 		<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
 
 		@foreach($category->childrens as $subcategory)
-			@if(!is_null($subcategory->name))
-				<h1 class="text-white text-shadow">{{ $subcategory->name }}</h1>
+			@if(!is_null($subcategory->title))
+				<h1 class="text-white text-shadow">{{ $subcategory->title }}</h1>
 			@endif
 		
 			<div class="row produse my-4" id="{{ $subcategory->slug }}">
