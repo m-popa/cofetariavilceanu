@@ -12,15 +12,15 @@
 					</div>
 					<div class="luni col-auto">
 						<h5 class="sub-titlu mb-0">Luni - Vineri</h5>
-						<h1 class="text-white">08:00 - 19:00</h1>
+						<h1 class="text-white font-secondary font-weight-bold">{{ $settings->monday_friday }}</h1>
 					</div>
 					<div class="sambata col-auto">
 						<h5 class="sub-titlu mb-0">Sâmbătă</h5>
-						<h1 class="text-white">08:00 - 16:00</h1>
+						<h1 class="text-white font-secondary font-weight-bold">{{ $settings->saturday }}</h1>
 					</div>
 					<div class="col-auto">
 						<h5 class="sub-titlu mb-0">Duminică</h5>
-						<h1 class="text-danger">Închis</h1>
+						<h1 class="text-danger">{{ $settings->sunday }}</h1>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 	<div class="faina">
 		<section class="contact py-5 mb-5">
 			<div class="container">
-				<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
+				<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vîlceanu</h5>
 				<h1 class="text-white text-shadow">Cum ne puteți contacta</h1>
 				<div class="contact-complet row mt-4">
 					<div class="col-4 d-none d-lg-inline-block pr-0">
@@ -44,21 +44,35 @@
 						</div>
 					</div>
 					<div class="col-md-12 col-lg-8 bg-white p-5 shadow-xl rounded-right">
-						<form id="contact-form" method="post" action="" role="form">
+
+						@if ($errors->any())
+						    <div class="alert alert-danger">
+						        <ul>
+						            @foreach ($errors->all() as $error)
+						                <li>{{ $error }}</li>
+						            @endforeach
+						        </ul>
+						    </div>
+						@endif
+
+						<form id="contact-form" method="post" action="{{ route('contact.store') }}" role="form">
+							@csrf
 							<div class="messages"></div>
 							<div class="controls">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="form_name">Nume *</label>
-											<input id="form_name" type="text" name="name" class="form-control" required="required" data-error="Numele este obligatoriu.">
+											<input id="form_name" type="text" name="first_name" 
+												value="{{ old('first_name') }}"
+												class="form-control @error('first_name') is-invalid @enderror" data-error="Numele este obligatoriu.">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="form_lastname">Prenume</label>
-											<input id="form_lastname" type="text" name="surname" class="form-control">
+											<input id="form_lastname" type="text" name="last_name" class="form-control">
 										</div>
 									</div>
 								</div>
@@ -66,22 +80,45 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="form_email">Email *</label>
-											<input id="form_email" type="email" name="email" class="form-control" required="required" data-error="Adresa de Email este obligatorie.">
+											<input id="form_email" type="email" name="email" 
+												value="{{ old('email') }}"
+												class="form-control @error('email') is-invalid @enderror">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<label for="form_need">Despre ce vreți să vorbim ? (Opțional)</label>
-											<select id="form_need" name="need" class="form-control" data-error="Please specify your need.">
-												<option value=""></option>
-												<option value="Vreau să comand un tort">Vreau să comand un tort</option>
-												<option value="Vreau să comand produse de Cofetărie">Vreau să comand produse de Cofetărie</option>
-												<option value="Vreau să comand produse de Patiserie">Vreau să comand produse de Patiserie</option>
-												<option value="Vreau să comand produse de Gelaterie">Vreau să comand produse de Gelaterie</option>
-												<option value="Am o intrebare despre ingrediente">Am o intrebare despre ingrediente</option>
-												<option value="Vreau să aflu mai multe informații despre alergeni">Vreau să aflu mai multe informații despre alergeni</option>
-												<option value="Despre altceva">Despre altceva</option>
+											<select id="form_need" name="subject" 
+												value="{{ old('subject') }}"
+												class="form-control @error('subject') is-invalid @enderror">
+												<option value="0" selected >Alegeți un subiect</option>
+												<option value="Vreau să comand un tort"
+													@if(old('subject') === 'Vreau să comand un tort') 
+													selected @endif
+												>Vreau să comand un tort</option>
+												<option value="Vreau să comand produse de Cofetărie"
+													@if(old('subject') === 'Vreau să comand produse de Cofetărie') 
+													selected @endif
+												>Vreau să comand produse de Cofetărie</option>
+												<option value="Vreau să comand produse de Patiserie"
+													@if(old('subject') === 'Vreau să comand produse de Patiserie') 
+													selected @endif
+												>Vreau să comand produse de Patiserie</option>
+												<option value="Vreau să comand produse de Gelaterie"
+													@if(old('subject') === 'Vreau să comand produse de Gelaterie') 
+													selected @endif
+												>Vreau să comand produse de Gelaterie</option>
+												<option value="Am o intrebare despre ingrediente"
+													@if(old('subject') === 'Am o intrebare despre ingrediente') 
+													selected @endif
+												>Am o întrebare despre ingrediente</option>
+												<option value="Vreau să aflu mai multe informații despre alergeni"
+													@if(old('subject') === 'Vreau să aflu mai multe informații despre alergeni') 
+													selected @endif
+												>Vreau să aflu mai multe informații despre alergeni</option>
+												<option value="Despre altceva" 
+													@if(old('subject') === 'Despre altceva') selected @endif>Despre altceva</option>
 											</select>
 										</div>
 									</div>
@@ -90,7 +127,8 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="form_message">Mesaj *</label>
-											<textarea id="form_message" name="message" class="form-control" rows="4" required="required" data-error="Vă rugăm să completați acest câmp."></textarea>
+											<textarea id="form_message" name="message" 
+												class="form-control @error('message') is-invalid @enderror" rows="4">{{ old('message') }}</textarea>
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
@@ -112,7 +150,7 @@
 			<div class="container">
 				<div class="adresa float-none float-xl-right">
 					<h5 class="sub-titlu mb-0 text-shadow">Adresă</h5>
-					<h1 class="text-white text-shadow">Aleea Digului, Targu Jiu, Gorj</h1>
+					<h1 class="text-white text-shadow">Aleea Digului, Târgu Jiu, Gorj</h1>
 				</div>
 				<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
 				<h1 class="text-white text-shadow">Unde ne puteți găsi</h1>

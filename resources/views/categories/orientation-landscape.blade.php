@@ -19,10 +19,10 @@
 
 				@if(is_array($product->display_price))
 					@foreach($product->display_price as $price)
-					<h4>{{ $price }}</h4>
+						<h4 class="price-display">{{ $price }}</h4>
 					@endforeach
 				@else
-					<h4>{{ $product->display_price }}</h4>
+					<h4 class="price-display">{{ $product->display_price }}</h4>
 				@endif
 			</div>
 		@endif
@@ -36,11 +36,12 @@
 				<i class="fas fa-2x fa-times-circle float-right mt-3 mr-3 p-1 text-dark close-modal" data-dismiss="modal"></i>
 				<div class="col-lg-6 col-xl-7 p-5 d-flex-column align-self-center order-2">
 					<h1>{{ $product->title }}</h1>
-					@if($product->disable_prices != 1)
-						<h4 class="mt-5">{{ $product->price }} / {{ $product->priceType->name }}</h4>
-						@if(!is_null($product->price2))
-							<h4>{{ $product->price2 }} Lei / {{ $product->priceType->name }}</h4>
-						@endif
+					@if(is_array($product->display_price))
+						@foreach($product->display_price as $price)
+							<h4 class="price-display">{{ $price }}</h4>
+						@endforeach
+					@else
+						<h4 class="price-display">{{ $product->display_price }}</h4>
 					@endif
 					@if(!is_null($product->sku))
 						<div class="my-3">

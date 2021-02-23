@@ -5,7 +5,7 @@
 		</div>
 
 		<div class="col-6 bg-white rounded-right p-4">
-			
+
 			@auth(backpack_guard_name())
 				<h4><span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">{{ $product->lft }}</span></h4>
 			@endauth
@@ -18,10 +18,10 @@
 
 			@if(is_array($product->display_price))
 				@foreach($product->display_price as $price)
-				<h4>{{ $price }}</h4>
+					<h4 class="price-display">{{ $price }}</h4>
 				@endforeach
 			@else
-				<h4>{{ $product->display_price }}</h4>
+				<h4 class="price-display">{{ $product->display_price }}</h4>
 			@endif
 
 
@@ -42,11 +42,12 @@
 						<p class="mb-5">{!!html_entity_decode($product->intro)!!}</p>
 					@endif
 
-					@if($product->disable_prices != 1)
-						<h4 class="mt-5">{{ $product->price }} / {{ $product->priceType->name }}</h4>
-						@if(!is_null($product->price2))
-							<h4>{{ $product->price2 }} Lei / {{ $product->priceType->name }}</h4>
-						@endif
+					@if(is_array($product->display_price))
+						@foreach($product->display_price as $price)
+							<h4 class="price-display">{{ $price }}</h4>
+						@endforeach
+					@else
+						<h4 class="price-display">{{ $product->display_price }}</h4>
 					@endif
 					<a href="{{ route('product.show', $product) }}" class="mt-3 btn btn-outline-dark">{{ $product->button_text }}</a>
 				</div>

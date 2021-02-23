@@ -7,7 +7,7 @@
 		<a href="{{ URL::previous() }}" class="text-white h5">
 			<i class="fas fa-2x fa-times-circle float-right mr-3 p-1 text-white"></i></a>
 		@if(!is_null( $product->parent_category))
-			<h5 class="sub-titlu mb-0 text-white h4">{{ $product->parent_category->name }}</h5>
+			<h5 class="sub-titlu mb-0 text-white h4">{{ $product->parent_category->title }}</h5>
 		@endif
 		<h1 class="text-white text-shadow">{{ $product->title }}</h1>
 		<div class="row mt-4">

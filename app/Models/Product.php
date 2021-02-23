@@ -148,8 +148,7 @@ class Product extends Model implements HasMedia
                 return "{$this->price2} Lei / {$this->priceType->name}";
             case 'allprices':
                 return [
-                    "{$this->price} Lei / {$this->priceType->name}",
-                    "{$this->price2} Lei / {$this->priceType->name}",
+                    "{$this->price} - {$this->price2} Lei / {$this->priceType->name}",
                 ];
             case 'noprice':
                 return null;

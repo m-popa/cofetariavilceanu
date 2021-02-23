@@ -120,6 +120,10 @@ header {
     .portrait {
         padding-bottom: 380px !important;
     }
+
+    .price-display {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 454px) {

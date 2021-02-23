@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
@@ -45,6 +46,16 @@ class AppServiceProvider extends ServiceProvider
                     ->parent()
                     ->ordered()
                     ->get();
+            }));
+        });
+
+        // Settings sharing
+        view()->composer([
+            'home',
+            'pages.contact',
+        ], function ($view) {
+            $view->with('settings', Cache::remember('settings', 7200, function () {
+                return Setting::latest()->first();
             }));
         });
     }
