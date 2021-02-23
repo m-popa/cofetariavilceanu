@@ -32,7 +32,7 @@ class ProductCrudController extends CrudController
         $this->crud->setEntityNameStrings('produs', 'produse');
 
         $this->crud->enableExportButtons();
-        $this->crud->enableReorder('name', 2);
+        $this->crud->enableReorder('name_and_order', 2);
         $this->crud->allowAccess('reorder');
         // dropdown filter
         $this->crud->addFilter([

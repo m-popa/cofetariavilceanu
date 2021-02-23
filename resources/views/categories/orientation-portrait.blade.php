@@ -1,10 +1,17 @@
 <div class="products {{ $category->name }} col-md-12 col-lg-6 mb-4 align-items-stretch">
 	<div class="d-flex product-container rounded shadow">
 		<div class="col-6 rounded-left image" data-toggle="modal" data-target="#{{ $product->slug }}" 
-			style="background-image:url('{{ $product->getFirstMediaUrl('images', 'home_images')}}');">
+			style="background-image:url('{{ $product->firstMedia->getUrl('home_images') }}');">
 		</div>
+
 		<div class="col-6 bg-white rounded-right p-4">
-			<h5>{{ $product->title }}</h5>
+			
+			@auth(backpack_guard_name())
+				<h4><span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">{{ $product->lft }}</span></h4>
+			@endauth
+
+			<h5>{{ $product->title }} 
+			</h5>
 			@if(!is_null($product->intro))
 				<p class="mb-3">{!!html_entity_decode($product->intro)!!}</p>
 			@endif
@@ -16,6 +23,8 @@
 			@else
 				<h4>{{ $product->display_price }}</h4>
 			@endif
+
+
 
 
 		</div>
@@ -41,7 +50,8 @@
 					@endif
 					<a href="{{ route('product.show', $product) }}" class="mt-3 btn btn-outline-dark">{{ $product->button_text }}</a>
 				</div>
-				<div class="col-lg-7 col-xl-8 rounded-right order-1" style="background-image:url('{{ $product->getFirstMediaUrl('images', 'modal_images')}}');">
+				<div class="col-lg-7 col-xl-8 rounded-right order-1" 
+				style="background-image:url('{{ $product->firstMedia->getUrl('home_images') }}');">
 				</div>
 			</div>
 		</div>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -18,7 +19,7 @@ class Product extends Model implements HasMedia
 
     protected $table = 'products';
 
-    // protected $with = ['categories'];
+    protected $with = ['firstMedia'];
 
     protected $guarded = ['id'];
 
@@ -156,6 +157,36 @@ class Product extends Model implements HasMedia
             default:
                 return "{$this->price} Lei / {$this->priceType->name}";
         }
+    }
+
+    /**
+     * Query scope "Ordered".
+     *
+     *
+     * @param  Illuminate\Database\Query\Builder $query
+     * @return Illuminate\Database\Query\Builder
+     */
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('lft');
+    }
+
+    /**
+     * Retrieve the Name And Order attribute.
+     *
+     * @return string
+     */
+    public function getNameAndOrderAttribute()
+    {
+        $categories = $this->categories->pluck('name')->implode(', ');
+
+        return "<span class='badge badge-danger'>$this->lft</span> <strong>$this->name</strong> <span class='float-right badge badge-success'>$categories</span>";
+    }
+
+    public function firstMedia(): MorphOne
+    {
+        return $this->morphOne(config('media-library.media_model'), 'model')
+            ->where('collection_name', 'images');
     }
 
     /**

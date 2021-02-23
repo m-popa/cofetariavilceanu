@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         $this->shareCategoriesWithNav();
+
+        // $this->registerBladeDirectives();
     }
 
     protected function shareCategoriesWithNav()
@@ -43,6 +46,15 @@ class AppServiceProvider extends ServiceProvider
                     ->ordered()
                     ->get();
             }));
+        });
+    }
+
+    protected function registerBladeDirectives()
+    {
+        Blade::if('admin', function () {
+            return backpack_user()
+                && isset(backpack_user()->roles)
+                && backpack_user()->roles->first()->name === 'admin';
         });
     }
 }
