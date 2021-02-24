@@ -10,14 +10,10 @@
 			@if(!is_null($subcategory->title))
 				<h1 class="text-white text-shadow">{{ $subcategory->title }}</h1>
 			@endif
-		
+
 			<div class="row produse my-4" id="{{ $subcategory->slug }}">
 				@foreach($subcategory->products as $key => $product)
-					@if($subcategory->orientation != 2)
-						@include('categories.orientation-portrait')
-					@else
-						@include('categories.orientation-landscape')
-					@endif		
+                    @include('categories/' . $subcategory->orientation_blade)
 				@endforeach
 			</div>
 
