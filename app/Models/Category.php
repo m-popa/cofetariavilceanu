@@ -2,16 +2,26 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Category extends Model
 {
     use CrudTrait;
     use Sluggable;
     use SluggableScopeHelpers;
+
+    /**
+     * Define the blade names for the orientations
+     *
+     * @var array
+     */
+    const ORIENTATIONS = [
+        1 => 'orientation-portrait',
+        2 => 'orientation-landscape',
+    ];
 
     protected $table = 'categories';
 
@@ -165,6 +175,16 @@ class Category extends Model
     public function scopeVisibleInNav($query)
     {
         return $query->where('visible_in_nav', 1);
+    }
+
+    /**
+     * Retrieve the Orientation Blade attribute.
+     *
+     * @return string
+     */
+    public function getOrientationBladeAttribute()
+    {
+        return self::ORIENTATIONS[$this->orientation];
     }
 
     /**
