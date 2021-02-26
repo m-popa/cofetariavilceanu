@@ -12,13 +12,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Category $category)
     {
         $settings = Setting::latest()->first();
         $categories = Category::whereHas('products')->where('homepage', 1)->orderBy('lft')->get();
+        $disable_description = '0';
+
         return view('home', [
             'settings' => $settings,
             'categories' => $categories,
+            'disable_description' => $disable_description,
         ]);
     }
 }

@@ -5,7 +5,6 @@
 		</div>
 
 		<div class="col-6 bg-white rounded-right p-4">
-
 			@auth(backpack_guard_name())
 				<h4><span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">{{ $product->lft }}</span></h4>
 			@endauth
@@ -23,10 +22,6 @@
 			@else
 				<h4 class="price-display">{{ $product->display_price }}</h4>
 			@endif
-
-
-
-
 		</div>
 	</div>
 </div>

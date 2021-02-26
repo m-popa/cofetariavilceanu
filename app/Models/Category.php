@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
@@ -81,6 +81,19 @@ class Category extends Model
     }
 
     /**
+     * Retrieve the galleryLink attribute.
+     *
+     *
+     * @param    mixed
+     * @param  mixed  $value
+     * @return string
+     */
+    // public function getGalleryLinkAttribute($value)
+    // {
+    //     return route('gallery.show', ['gallery' => $category->gallery]);
+    // }
+
+    /**
      * Daca e categorie parinte returneaza true, altfel returneaza false.
      *
      * @return bool
@@ -107,6 +120,17 @@ class Category extends Model
     public function childrenCategories()
     {
         return $this->hasMany(Category::class, 'parent_id')->whereNotNull('parent_id')->where('parent_id', $this->id);
+    }
+
+    /**
+     * Relationship with the Gallery model.
+     *
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function gallery()
+    {
+        return $this->hasOne(Gallery::class);
     }
 
     /**

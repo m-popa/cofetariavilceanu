@@ -18,11 +18,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    @stack('header-styles')
 </head>
 <body>
 
-    <div id="app">
-    </div>
         @include('partials.header')
 
         @include('partials.nav')
@@ -38,12 +37,3 @@
 
 </body>
 </html>
-
-{{-- <script type="text/javascript">
-
-    jQuery("span.showprod").click(function() {
-    // console.log(clicked);
-      $( ".products" ).toggleClass('d-none');
-    });
-
-</script> --}}

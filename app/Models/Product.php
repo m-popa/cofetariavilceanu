@@ -73,7 +73,6 @@ class Product extends Model implements HasMedia
             ->addMediaConversion('modal_images')
             ->width(1200)
             ->height(700)
-            // ->watermark(public_path('/images/test.png'))
             ->queued();
 
         $this

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
@@ -39,13 +40,21 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer([
             'partials.nav',
+            'partials.footer',
         ], function ($view) {
             $view->with('categories', Cache::remember('categories', 7200, function () {
                 return Category::query()->visibleInNav()
-                // return Category::whereNotIn('id', [30, 35])
                     ->parent()
                     ->ordered()
                     ->get();
+            }));
+        });
+        //testimonials
+        view()->composer([
+            'partials.footer',
+        ], function ($view) {
+            $view->with('testimonials', Cache::remember('testimonials', 7200, function () {
+                return Testimonial::all();
             }));
         });
 

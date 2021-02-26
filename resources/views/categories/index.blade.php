@@ -15,6 +15,10 @@
 				@foreach($subcategory->products as $key => $product)
                     @include('categories/' . $subcategory->orientation_blade)
 				@endforeach
+				@if(!is_null($subcategory->gallery))
+					<a href="{{ route('gallery.show', $subcategory->gallery) }}" 
+						class="mt-3 btn btn-outline-dark btn-lg text-white mx-auto">Vezi Galeria</a>
+				@endif
 			</div>
 
 		@endforeach

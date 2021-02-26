@@ -48,7 +48,6 @@
 		      @else
 		      	@include('crud::form_content', [ 'fields' => $crud->fields(), 'action' => 'create' ])
 		      @endif
-		      AICI E 
 
 
 

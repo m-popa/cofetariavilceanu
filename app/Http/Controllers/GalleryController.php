@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index()
     {
-        $disable_description = $category->childrens->pluck('disable_description');
-        return view('categories.index', [
-            'category' => $category,
-            'disable_description' => $disable_description,
-        ]);
+        //
     }
 
     /**
@@ -45,22 +41,23 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category      $category
-     * @param  mixed                     $slug
+     * @param  \App\Models\Gallery       $gallery
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Gallery $gallery)
     {
-        return view('categories.show', ['category' => $category]);
+        return view('gallery.show', [
+            'gallery' => $gallery,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category      $category
+     * @param  \App\Models\Gallery       $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Gallery $gallery)
     {
         //
     }
@@ -69,10 +66,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category      $category
+     * @param  \App\Models\Gallery       $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Gallery $gallery)
     {
         //
     }
@@ -80,10 +77,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category      $category
+     * @param  \App\Models\Gallery       $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Gallery $gallery)
     {
         //
     }

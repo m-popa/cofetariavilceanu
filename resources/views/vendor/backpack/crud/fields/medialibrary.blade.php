@@ -14,7 +14,7 @@
             name="images"
             :model="$model"
             collection="images"
-            max-items="10"
+            max-items="100"
             rules="mimes:jpeg,jpg"
         />
         
