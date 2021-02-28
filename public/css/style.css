@@ -202,7 +202,11 @@ nav .btn {
     background-repeat: no-repeat;
 
 }
-
+.prajituri-home-page, .prajituri-la-kilogram {
+    background-image: url(../images/fundalPatiserie.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+}
 /* Patiserie
 ---------- */
 .prajituri {
