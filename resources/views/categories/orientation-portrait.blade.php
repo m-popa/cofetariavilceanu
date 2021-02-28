@@ -6,7 +6,9 @@
 
 		<div class="col-6 bg-white rounded-right p-4">
 			@auth(backpack_guard_name())
-				<h4><span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">{{ $product->lft }}</span></h4>
+				<span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">
+					<div class="h6">{{ $product->lft }}</div>
+				</span>
 			@endauth
 			<h5>{{ $product->title }} 
 			</h5>
