@@ -58,7 +58,7 @@
 				class="h6 text-white float-none mr-2 float-sm-right">Contactează-ne</a>
 				<a href="https://anpc.ro/" 
 				class="h6 text-white float-none mr-2 float-sm-right" target="_blank">ANPC</a>
-				<a href="alergeni" 
+				<a href="/alergeni" 
 				class="h6 text-white float-none mr-2 float-sm-right">Alergeni</a>
 				<br class="d-block d-sm-none">
 				<span class="h6 text-white d-block mt-3 m-lg-0">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
