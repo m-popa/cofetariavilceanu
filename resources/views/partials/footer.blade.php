@@ -45,7 +45,7 @@
 					<a class="h6 text-white mr-3 text-capitalize" href="{{ $category->url }}">{{ $category->name }}</a> 
 					@endforeach
 				</h3>
-				
+
 				<h3>
 					Social Media | 
 					<br class="d-block d-md-none"> 
@@ -55,13 +55,13 @@
 			</div>
 			<div class="drepturi col-12 mt-4 pt-4">		
 				<a href="{{ route('contact') }}" 
-				class="h6 text-white float-none mx-2 float-sm-right">Contactează-ne</a>
+				class="h6 text-white float-none mr-2 float-sm-right">Contactează-ne</a>
 				<a href="https://anpc.ro/" 
-				class="h6 text-white float-none mx-2 float-sm-right" target="_blank">ANPC</a>
+				class="h6 text-white float-none mr-2 float-sm-right" target="_blank">ANPC</a>
 				<a href="alergeni" 
-				class="h6 text-white float-none mx-2 float-sm-right">Alergeni</a>
+				class="h6 text-white float-none mr-2 float-sm-right">Alergeni</a>
 				<br class="d-block d-sm-none">
-				<span class="h6 text-white">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
+				<span class="h6 text-white d-block mt-3 m-lg-0">© {{ now()->year }} Cofetaria Vilceanu. Toate drepturile rezervate.</span>
 			</div>
 		</div>
 	</div>
