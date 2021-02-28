@@ -4,7 +4,7 @@
 
 <section class="produse torturi faina py-5" id="torturi">
 	<div class="container">
-		<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vilceanu</h5>
+		<h5 class="sub-titlu mb-0 text-shadow">Cofetăria Vîlceanu</h5>
 
 		@foreach($category->childrens as $subcategory)
 			@if(!is_null($subcategory->title))
