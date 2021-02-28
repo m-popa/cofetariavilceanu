@@ -12,7 +12,7 @@
 
 	<div class="row no-gutters my-4">
 	  <div class="card-columns">
-	    @foreach($gallery->media()->simplePaginate(40) as $media)
+	    @foreach($gallery->media as $media)
 		    <div class="card border-0">
 
 		    <a data-fancybox="gallery" href="{{ $media->getUrl('gallery_images') }}">
@@ -28,7 +28,6 @@
 	    @endforeach
 
 	  </div>
-	  {{ $gallery->media()->simplePaginate()->links() }}
 	</div>
 
 </div>
