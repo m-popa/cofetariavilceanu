@@ -1,4 +1,4 @@
-<div class="products {{ $category->slug }} col-md-12 col-lg-6 mb-4 align-items-stretch">
+<div class="products col-md-12 col-lg-6 mb-4 align-items-stretch">
 	<div class="d-flex product-container rounded shadow">
 		<div class="col-6 rounded-left image" data-toggle="modal" data-target="#{{ $product->slug }}" 
 			style="background-image:url('{{ $product->firstMedia->getUrl('home_images') }}');">
