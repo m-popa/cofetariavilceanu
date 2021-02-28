@@ -44,7 +44,7 @@
 	<div class="" id="jump"></div>
 	@foreach($categories as $category)
 	@if($category->homepage = 1)
-	<section class="produse {{ strtolower($category->name) }} pt-5">
+	<section class="produse {{ strtolower($category->slug) }} pt-5">
 		<div class="container">
 			<h1 class="text-white text-shadow "><span class="text-capitalize">{{ $category->title }}</span> |
 				<a class="h5 text-white" href="{{ route('categories.index', $category) }}">Vezi toate produsele</a>
