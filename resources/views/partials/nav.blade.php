@@ -14,7 +14,6 @@
 						</a>
 					</div>
 				@endforeach
-				<a href="#jump" role="button" class="btn btn-outline-light px-4 mr-3 rounded-pill  d-inline-block d-md-none"><i class="fas fa-arrow-circle-down"></i></a>
 
 				<div class="dropdown d-inline-block float-right float-md-none">
 					<a href="#" role="button" class="btn btn-outline-light px-4 rounded-pill d-inline-block d-md-none float-right" id="responsiveMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
