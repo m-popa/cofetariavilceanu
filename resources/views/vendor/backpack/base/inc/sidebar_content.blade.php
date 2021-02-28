@@ -11,6 +11,9 @@
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('gallery') }}'>
 	<i class="las la-image mr-3"></i> Galerie Foto</a>
 </li>
+<li class='nav-item'><a class='nav-link' href='{{ backpack_url('page') }}'>
+	<i class="las la-book-reader mr-3"></i> <span>Pagini</span></a>
+</li>
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('testimonial') }}'>
 	<i class="lab la-readme mr-3"></i> Ce spun clienții</a>
 </li>
@@ -27,4 +30,5 @@
 </li>
 
 <li class='nav-item'><a class='nav-link' href='{{ backpack_url('setting') }}'><i class='nav-icon la la-cog'></i> Setări Site</a></li>
+
 

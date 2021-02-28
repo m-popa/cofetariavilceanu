@@ -14,7 +14,13 @@
 	  <div class="card-columns">
 	    @foreach($gallery->media()->simplePaginate(40) as $media)
 		    <div class="card border-0">
+
 		    <a data-fancybox="gallery" href="{{ $media->getUrl('gallery_images') }}">
+
+		    	<span class="badge badge-light position-absolute z-index" style="right: 10px; top: 5px;">
+		    		<div class="h5 align-middle">{{ $loop->iteration }}</div>
+		    	</span>
+
 		    	<img class="card-img-top rounded-0 shadow" 
 		    	src="{{ $media->getUrl('gallery_images') }}" alt="{{ $gallery->name }}">
 		    </a>

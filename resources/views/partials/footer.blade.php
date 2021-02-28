@@ -1,33 +1,38 @@
 <div class="gradient-line"></div>
 <footer class="footer pt-5 pb-4">
 	<div class="container">
+		<div class="testimonials d-none">
+			<h3 class="">Ce spun clienții noștri | <br class="d-none d-md-none"> 
+				<span class="h6 text-white">Clienții vorbesc pentru noi</span>
+			</h3>
+			<div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel">
+				<div class="carousel-inner">
 
-		<h3 class="">Ce spun clienții nostri | <br class="d-none d-md-none"> <span class="h6 text-white">Clienții vorbesc pentru noi</span></h3>
-		<div id="carouselExampleControls" class="carousel slide mt-4" data-ride="carousel">
-			<div class="carousel-inner">
-
-				@foreach ($testimonials as $testimonial)
-				<div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-					<div class="row">
-						<div class="col-12 mb-6">
-							<div class="bg-dark text-white p-4 rounded shadow">
-								<div class="stele float-right">
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
-									<i class="fas fa-star"></i>
+					@foreach ($testimonials as $testimonialsChunk)
+					<div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+						<div class="row">
+							@foreach ($testimonialsChunk as $testimonial)
+							<div class="col-6 mb-6">
+								<div class="bg-dark text-white p-4 rounded shadow">
+									<div class="stele float-right">
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+										<i class="fas fa-star"></i>
+									</div>
+									<h5>{{ $testimonial->name }}</h5>
+									<p>{{ $testimonial->description }} 
+										<a href="https://www.facebook.com/cofetariavilceanu/" class="text-muted">@cofetariavilceanu</a>
+									</p>
 								</div>
-								<h5>{{ $testimonial->name }}</h5>
-								<p>{{ $testimonial->description }} 
-									<a href="https://www.facebook.com/cofetariavilceanu/" class="text-muted">@cofetariavilceanu</a>
-								</p>
 							</div>
+							@endforeach
+
 						</div>
-					
 					</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
 		</div>
 
@@ -47,6 +52,8 @@
 					<a class="h6 text-white mr-3" href="https://www.facebook.com/cofetariavilceanu" target="_blank">Facebook</a>
 					<a href="https://api.whatsapp.com/send?phone=+40769098648" class="h6 text-white mr-3">Whatsapp</a>
 				</h3>
+				<a href="https://anpc.ro/" class="h6 text-white mr-3" target="_blank">ANPC</a>
+				<a href="/alergeni" class="h6 text-white mr-3" target="_blank">Alergeni</a>
 			</div>
 			<div class="drepturi col-12 mt-4 pt-4">		
 				<a class="h6 text-white float-none float-sm-right" href="{{ route('contact') }}">Contactează-ne</a>

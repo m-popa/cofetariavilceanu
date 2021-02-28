@@ -53,9 +53,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer([
             'partials.footer',
         ], function ($view) {
-            $view->with('testimonials', Cache::remember('testimonials', 7200, function () {
-                return Testimonial::all();
-            }));
+            $view->with('testimonials', Testimonial::all()->chunk(2));
         });
 
         // Settings sharing
@@ -66,6 +64,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('settings', Cache::remember('settings', 7200, function () {
                 return Setting::latest()->first();
             }));
+        });
+
+        view()->composer('*', function ($view) {
+            $view_name = str_replace('.', ' ', $view->getName());
+            view()->share('view_name', $view_name);
         });
     }
 

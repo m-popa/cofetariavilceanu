@@ -495,3 +495,7 @@ nav .btn {
 .font-secondary {
     font-family: 'Amita', cursive;
 }
+
+body.pages.contact .testimonials {
+    display: block !important;
+}

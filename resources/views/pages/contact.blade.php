@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 	<div class="shadow-xl">
 		<div class="gradient-line"></div>
 		<section class="program mb-5 py-5">
@@ -39,7 +40,7 @@
 						<div class="imagine-contact h-100 shadow-xl rounded-left d-flex align-items-end" style="">
 							<div class="pl-4 pb-4">
 								<h6 class="text-white mb-1 text-shadow">Ne puteți contacta și telefonic</h6>
-								<h2 class="text-white text-shadow">(0769) 098-648</h2>
+								<h2 class="text-white text-shadow font-secondary">(0769) 098-648</h2>
 							</div>
 						</div>
 					</div>
@@ -52,6 +53,12 @@
 						                <li>{{ $error }}</li>
 						            @endforeach
 						        </ul>
+						    </div>
+						@endif
+
+						@if(session()->has('message'))
+						    <div class="alert alert-success">
+						        {{ session()->get('message') }}
 						    </div>
 						@endif
 
@@ -109,10 +116,10 @@
 													@if(old('subject') === 'Vreau să comand produse de Gelaterie') 
 													selected @endif
 												>Vreau să comand produse de Gelaterie</option>
-												<option value="Am o intrebare despre ingrediente"
-													@if(old('subject') === 'Am o intrebare despre ingrediente') 
+												<option value="Detalii despre livrare"
+													@if(old('subject') === 'Detalii despre livrare') 
 													selected @endif
-												>Am o întrebare despre ingrediente</option>
+												>Detalii despre livrare</option>
 												<option value="Vreau să aflu mai multe informații despre alergeni"
 													@if(old('subject') === 'Vreau să aflu mai multe informații despre alergeni') 
 													selected @endif

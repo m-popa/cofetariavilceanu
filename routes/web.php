@@ -11,3 +11,5 @@ Route::post('contact', 'ContactController')->name('contact.store');
 
 Auth::routes();
 Route::mediaLibrary();
+Route::get('{page}/{subs?}', ['uses' => '\App\Http\Controllers\HomeController@pages'])
+    ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);

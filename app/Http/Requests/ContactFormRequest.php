@@ -27,7 +27,7 @@ class ContactFormRequest extends FormRequest
             'first_name' => 'required|max:50',
             'last_name'  => 'sometimes|max:50',
             'email'      => 'required|email',
-            'subject'    => 'nullable|in:Vreau să comand un tort,Vreau să comand produse de Cofetărie,Vreau să comand produse de Patiserie,Vreau să comand produse de Gelaterie,Am o intrebare despre ingrediente,Vreau să aflu mai multe informații despre alergeni,Despre altceva',
+            'subject'    => 'nullable|in:Vreau să comand un tort,Vreau să comand produse de Cofetărie,Vreau să comand produse de Patiserie,Vreau să comand produse de Gelaterie,Detalii despre livrare,Vreau să aflu mai multe informații despre alergeni,Despre altceva',
             'message'    => 'required|max:1000',
         ];
     }

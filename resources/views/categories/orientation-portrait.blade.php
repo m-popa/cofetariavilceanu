@@ -8,7 +8,6 @@
 			@auth(backpack_guard_name())
 				<h4><span class="badge badge-danger position-absolute" style="right: 20px; top: 5px;">{{ $product->lft }}</span></h4>
 			@endauth
-
 			<h5>{{ $product->title }} 
 			</h5>
 			@if(!is_null($product->intro))

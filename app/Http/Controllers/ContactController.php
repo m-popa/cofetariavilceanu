@@ -21,6 +21,6 @@ class ContactController extends Controller
                 )
             );
 
-        return redirect()->back()->with('success', 'Mesajul dumnveavoastră fost trimis!');
+        return redirect()->back()->with('message', 'Mesajul dumnveavoastră fost trimis!');
     }
 }

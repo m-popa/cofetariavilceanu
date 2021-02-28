@@ -20,7 +20,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @stack('header-styles')
 </head>
-<body>
+<body class="{{ $view_name }}">
 
         @include('partials.header')
 
